@@ -1,0 +1,10 @@
+FROM node:10.7-alpine
+MAINTAINER <%= ENV['NAME'] %> <%= "<#{ENV['EMAIL']}>" %>
+ENV APP_ROOT /src
+
+RUN mkdir ${APP_ROOT}
+WORKDIR ${APP_ROOT}
+ADD . ${APP_ROOT}
+
+RUN npm install
+RUN npm run build
