@@ -1,0 +1,15 @@
+<% component_name = File.basename(file_name.camelize, '.test') %>
+import * as React from "react";
+import * as Renderer from "react-test-renderer";
+import <%= component_name %> from "./<%= component_name %>";
+import { <%= component_name %>Props } from "./<%= component_name %>";
+
+describe("<%= component_name %>", () => {
+  it("should be render", () => {
+    const props: <%= component_name %>Props = {}
+    const subject = Renderer.create(
+      <<%= component_name %> {...props} />
+    ).toJSON();
+    expect(subject).toMatchInlineSnapshot();
+  });
+});
